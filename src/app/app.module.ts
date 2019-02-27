@@ -9,6 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp
     
+    
   ],
   imports: [
     BrowserModule,
