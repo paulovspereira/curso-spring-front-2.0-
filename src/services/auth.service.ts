@@ -41,4 +41,16 @@ export class AuthService {
         this.storage.setLocalUser(null);
     }
 
+    refleshToken() {
+
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/auth/refresh_token`, 
+            {},
+            
+            {
+                observe: 'response',
+                responseType: 'text'
+            });
+        }
+
 }
