@@ -37,8 +37,7 @@ export class HomePage {
     .subscribe(response => {
       this.auth.successfulLogin(response.headers.get('Authorization'));
       this.navCtrl.setRoot('CategoriasPage');
-      console.log("Teste");
-    },
+     },
     error => {});   
 
   }
@@ -47,10 +46,13 @@ export class HomePage {
     this.auth.authenticate(this.creds)
       .subscribe(response => {
         this.auth.successfulLogin(response.headers.get('Authorization'));
-        this.navCtrl.setRoot('CategoriasPage');
-        console.log("Teste");
+        this.navCtrl.setRoot('CategoriasPage'); 
       },
       error => {});    
   }
- 
+
+  signup() {
+    this.navCtrl.push('SignupPage');
+  }
 }
+
