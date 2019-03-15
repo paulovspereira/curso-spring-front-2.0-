@@ -20,13 +20,11 @@ export class AuthInterceptor implements HttpInterceptor {
         if (localUser && requestToAPI) {
             const authReq = req.clone({headers: req.headers.set('Authorization', 'Bearer ' + localUser.token)});
             console.log("Entrou");
-            
             return next.handle(authReq);
         }
         else {
             console.log("Não Entrou");
-            const authReq = req.clone({headers: req.headers.set('Authorization', '')})
-            return next.handle(authReq);
+            return next.handle(req);
         }
     }
 }
