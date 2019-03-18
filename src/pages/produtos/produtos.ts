@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProdutoDTO } from '../../models/produto.dto';
 import { ProdutoService } from '../../services/domain/produto.service';
+import { API_CONFIG } from '../../config/api.config';
+
 
 /**
  * Generated class for the ProdutosPage page.
@@ -17,7 +19,7 @@ import { ProdutoService } from '../../services/domain/produto.service';
 })
 export class ProdutosPage {
 
-  items : ProdutoDTO[];
+  items : ProdutoDTO[] = [];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -25,13 +27,22 @@ export class ProdutosPage {
   }
 
   ionViewDidLoad() {
-
     let categoria_id= this.navParams.get('categoria_id');
     this.produtoService.findByCategoria(categoria_id)
         .subscribe(response => {
           this.items = response['content'];
+          this.loadImageUrls();
         },
         
         error => {});
       }
+
+      loadImageUrls() {
+        for (var i=0; i<=this.items.length; i++) {
+          if(this.items[i] !== undefined) {
+            console.log(this.items[i]);
+            this.items[i].imageUrl = `${API_CONFIG.bucketBaseUrl}/prod${this.items[i].id}-small.jpg`;    
+          }
+        }
+      }  
 }
