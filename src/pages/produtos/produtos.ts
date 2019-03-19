@@ -40,9 +40,12 @@ export class ProdutosPage {
       loadImageUrls() {
         for (var i=0; i<=this.items.length; i++) {
           if(this.items[i] !== undefined) {
-            console.log(this.items[i]);
             this.items[i].imageUrl = `${API_CONFIG.bucketBaseUrl}/prod${this.items[i].id}-small.jpg`;    
           }
         }
-      }  
+      } 
+      
+    showDetail(){
+      this.navCtrl.push('ProdutoDetailPage');
+    }
 }
