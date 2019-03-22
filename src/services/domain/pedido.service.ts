@@ -1,3 +1,4 @@
+
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { API_CONFIG } from "../../config/api.config";
@@ -10,6 +11,7 @@ export class PedidoService {
     }
 
     insert(obj: PedidoDTO) {
+        console.log(obj);
         return this.http.post(
             `${API_CONFIG.baseUrl}/pedidos`,
             obj,

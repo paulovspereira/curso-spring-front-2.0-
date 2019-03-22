@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx'; // IMPORTANTE: IMPORT ATUALIZADO
@@ -19,11 +20,9 @@ export class AuthInterceptor implements HttpInterceptor {
 
         if (localUser && requestToAPI) {
             const authReq = req.clone({headers: req.headers.set('Authorization', 'Bearer ' + localUser.token)});
-            console.log("Entrou");
             return next.handle(authReq);
         }
         else {
-            console.log("Não Entrou");
             return next.handle(req);
         }
     }

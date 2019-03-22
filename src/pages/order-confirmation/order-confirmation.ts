@@ -62,9 +62,12 @@ export class OrderConfirmationPage {
   }
 
   checkout() {
+    console.log(this.pedido);
     this.pedidoService.insert(this.pedido)
       .subscribe(response => {
+        console.log( this.pedidoService.insert(this.pedido));
         this.cartService.createOrClearCart();
+        console.log(this.cartService.createOrClearCart());
         this.codpedido = this.extractId(response.headers.get('location'));
       },
       error => {
@@ -75,6 +78,7 @@ export class OrderConfirmationPage {
   }
 
   private extractId(location : string) : string {
+    console.log(location);
     let position = location.lastIndexOf('/');
     return location.substring(position + 1, location.length);
   }
