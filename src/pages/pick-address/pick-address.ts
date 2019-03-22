@@ -6,8 +6,6 @@ import { ClienteService } from '../../services/domain/cliente.service';
 import { PedidoDTO } from '../../models/pedido.dto';
 import { CartService } from '../../services/domain/cart.service';
 
-
-
 @IonicPage()
 @Component({
   selector: 'page-pick-address',
@@ -19,11 +17,12 @@ export class PickAddressPage {
 
   pedido: PedidoDTO;
 
-  constructor(public navCtrl: NavController,
-               public navParams: NavParams,
-               public storage: StorageService,
-               public clienteService: ClienteService,
-               public cartService: CartService) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public storage: StorageService,
+    public clienteService: ClienteService,
+    public cartService: CartService) {
   }
 
   ionViewDidLoad() {

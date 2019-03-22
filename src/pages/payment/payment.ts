@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PedidoDTO } from '../../models/pedido.dto';
@@ -21,7 +22,6 @@ export class PaymentPage {
     public navParams: NavParams,
     public formBuilder: FormBuilder) {
 
-
     this.pedido = this.navParams.get('pedido');
 
     this.formGroup = this.formBuilder.group({
@@ -34,5 +34,4 @@ export class PaymentPage {
     this.pedido.pagamento = this.formGroup.value;
     this.navCtrl.setRoot('OrderConfirmationPage', {pedido: this.pedido});
   }
-
 }

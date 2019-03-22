@@ -1,14 +1,5 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Produtos</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-
-</ion-content>
-<ion-header>
-  <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -17,9 +8,14 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-fab top right edge>
-        <button navPush="CartPage" ion-fab mini><ion-icon name="cart"></ion-icon></button>
-      </ion-fab>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-fab top right edge>
+    <button navPush="CartPage" ion-fab mini><ion-icon name="cart"></ion-icon></button>
+  </ion-fab>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="showDetail(item.id)">
       <ion-thumbnail item-start>
@@ -30,5 +26,7 @@
     </button>
   </ion-list>
 
-  
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>  
 </ion-content>
